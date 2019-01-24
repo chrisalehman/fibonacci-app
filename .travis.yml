@@ -1,0 +1,23 @@
+sudo: required
+services:
+  -docker
+
+before_install:
+  - docker build -t chrisalehman/fibonacci-app-client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run chrisalehman/fibonacci-app-client-test npm test -- --coverage
+
+after_success:
+  # build components
+  - docker build -t chrisalehman/fibonacci-app-client ./client
+  - docker build -t chrisalehman/fibonacci-app-nginx ./nginx
+  - docker build -t chrisalehman/fibonacci-app-server ./server
+  - docker build -t chrisalehman/fibonacci-app-worker ./worker
+  # log in to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # upload images to docker hub
+  - docker push chrisalehman/fibonacci-app-client
+  - docker push chrisalehman/fibonacci-app-nginx
+  - docker push chrisalehman/fibonacci-app-server
+  - docker push chrisalehman/fibonacci-app-worker
