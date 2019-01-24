@@ -1,2 +1,2 @@
 # fibonacci-app
-Trivial React app utilizing Docker, Express, Redis and PostgreSQL
+Multi-container React app utilizing Docker, Express, Redis and PostgreSQL
