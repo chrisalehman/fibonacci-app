@@ -4,14 +4,14 @@
     {
       "name": "fibonacci-app-client",
       "image": "chrisalehman/fibonacci-app-client",
-      "hostname": "client",
+      "hostname": "fibonacci-app-client",
       "essential": false,
       "memory": 128
     },
     {
       "name": "fibonacci-app-server",
       "image": "chrisalehman/fibonacci-app-server",
-      "hostname": "server",
+      "hostname": "fibonacci-app-server",
       "essential": false,
       "memory": 128
     },
