@@ -1,0 +1,34 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "fibonacci-app-client",
+      "image": "chrisalehman/fibonacci-app-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "fibonacci-app-server",
+      "image": "chrisalehman/fibonacci-app-server",
+      "hostname": "server",
+      "essential": false
+    },
+    {
+      "name": "fibonacci-app-worker",
+      "image": "chrisalehman/fibonacci-app-worker",
+      "essential": false
+    },
+    {
+      "name": "fibonacci-app-nginx",
+      "image": "chrisalehman/fibonacci-app-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]      
+    }
+  ] 
+}
