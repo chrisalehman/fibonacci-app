@@ -4,7 +4,7 @@ set -e
 PWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 . ${HOME}/.bash_profile
-. ${PWD}/env-setup-pkg-mgr.sh
+. ${PWD}/env-setup-helper.sh
 
 ### install homebrew packages ###
 install_homebrew
@@ -16,12 +16,8 @@ install_brew_package node
 install_brew_cask_package minikube
 install_brew_cask_package virtualbox
 
-# cache git creds for 24 hours
-git config credential.helper 'cache --timeout=86400'
-
-# one-time encryption of travis client secret for gcp
-# create credentials from gcp
-# travis encrypt-file <client-secret.json> --add
+### install misc ###
+install_gcloud_sdk
 
 ####
 # Add these lines to ~/.bash_profile
@@ -29,10 +25,10 @@ git config credential.helper 'cache --timeout=86400'
 # brew: install ruby
 #export PATH="/usr/local/opt/ruby/bin:$PATH"
 #
-# install gcloud - download from gcp
+# install gcloud sdk
 #export PATH="/opt/google-cloud-sdk/bin:$PATH"
 #
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="/Users/admin/.sdkman"
-#[[ -s "/Users/admin/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/admin/.sdkman/bin/sdkman-init.sh"
+# sdkman - THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+#export SDKMAN_DIR="${HOME}/.sdkman"
+#[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
 ####

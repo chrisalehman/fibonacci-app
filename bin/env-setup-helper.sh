@@ -48,3 +48,18 @@ function install_brew_cask_package() {
         brew cask ls $1 --versions
     fi
 }
+
+### GCLOUD SDK ###
+
+function install_gcloud_sdk() {
+    GCLOUD_SDK_NAME='google-cloud-sdk'
+    if [ -z "`which gcloud`" ]; then
+        GCLOUD_SDK_URL=`wget -qO- https://cloud.google.com/sdk/docs/quickstart-macos | grep -Eo "(http|https)://[\da-z./?A-Z0-9\D=_-]*" | grep ${GCLOUD_SDK_NAME} | grep 64`
+        wget -c ${GCLOUD_SDK_URL} -O - | tar -xz
+        sudo rm -rf /usr/local/${GCLOUD_SDK_NAME} 2> /dev/null
+	sudo mv ./${GCLOUD_SDK_NAME} /usr/local
+        echo "Google Cloud SDK installed in /usr/local/${GCLOUD_SDK_NAME}."
+    else
+        gcloud -v
+    fi
+}
