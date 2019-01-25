@@ -10,9 +10,11 @@ PWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 install_homebrew
 install_brew_package git
 install_brew_cask_package docker
-#install_brew_package ruby
-#install_brew_package travis
+install_brew_package ruby
+install_brew_package travis
 install_brew_package node
+install_brew_cask_package minikube
+install_brew_cask_package virtualbox
 
 # cache git creds for 24 hours
 git config credential.helper 'cache --timeout=86400'
