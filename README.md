@@ -1,5 +1,5 @@
 # fibonacci-app
-Multi-container React app utilizing Docker, Express, Redis and PostgreSQL. Pushes Docker images to Docker Hub. TravisCI builds and pushes application to AWS Elastic Beanstalk. 
+Multi-container React app utilizing Docker, Express, Redis and PostgreSQL. TravisCI builds and pushes Docker images to Docker Hub, then deploys application to AWS Elastic Beanstalk. 
 
 Prerequisites in AWS: 
 1. Create RDS instance (backed by PostgreSQL)
